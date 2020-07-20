@@ -1,15 +1,7 @@
 import React from 'react';
+import { useSelector, useDispatch } from "react-redux";
 
-var posts = [
-  {
-    title: "Titulo do post 1",
-    content: "Conteúdo do post 1",
-  },
-  {
-    title: "Titulo do post 2",
-    content: "Conteúdo do post 2",
-  }
-];
+import { allPostsReference } from "../../features/post/postSlice";
 
 const Posts = ({ posts }) => {
 
@@ -32,6 +24,9 @@ const Posts = ({ posts }) => {
 };
 
 export default function index() {
+
+  const posts    = useSelector(allPostsReference);
+
   return (
     <div className="conteiner">
 

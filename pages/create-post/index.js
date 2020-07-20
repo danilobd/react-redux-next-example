@@ -1,6 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useDispatch } from "react-redux";
+import { sendToServer } from "../../features/post/postSlice";
 
 export default function CreatePost() {
+
+    const dispatch = useDispatch();
 
     const title = useRef();
     const text = useRef();
@@ -67,10 +71,12 @@ export default function CreatePost() {
 
         setSended("sending");
 
-        let thetitle = title.current.value;
-        let thecontent = text.current.value;
+        let post = {
+            title: title.current.value,
+            content: text.current.value,
+        };
 
-        //
+        dispatch(sendToServer(post));
 
         setSended("yes");
 
